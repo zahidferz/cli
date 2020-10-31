@@ -8,11 +8,15 @@ pipeline {
     }
 
     stage('test') {
+      environment {
+        var = 'VARIABLE'
+      }
       steps {
-        sh '''echo "hello from test" >> hello.txt
+        sh '''echo "hello from $var" >> hello.txt
 ls
 echo "--------"
 cat hello.txt'''
+        sleep 15
       }
     }
 
